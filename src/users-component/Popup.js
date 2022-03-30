@@ -30,7 +30,7 @@ const Popup =(props)=>{
       </div>
     </div>
   </div>
-<div className="modal-backdrop" ></div>
+<div className="modal-backdrop" onClick={props.popupHandler} ></div>
     </>)
 }
 
