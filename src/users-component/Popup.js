@@ -5,7 +5,7 @@ const Popup =(props)=>{
   const dispatch = useDispatch();  
 
     let concreteId  = useSelector(state => state.fetchData.id)
-    let concreteUser  = useSelector(state => state.fetchData.users[concreteId-1])
+    let concreteUser  = useSelector(state => state.fetchData.users).filter((user)=>user.id === concreteId)
     const deleteHandler=()=>{
       dispatch(dataActions.delUser(concreteId));
       props.popupHandler()
@@ -21,7 +21,7 @@ const Popup =(props)=>{
         </button>
         </div>
         <div className="modal-body">
-        <p>You are going to delete '{concreteUser?.username}' from the list. Are you sure?</p>
+        <p>You are going to delete '{concreteUser[0].username}' from the list. Are you sure?</p>
         </div>
         <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={props.popupHandler}>Cancel</button>
