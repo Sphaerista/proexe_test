@@ -6,7 +6,6 @@ import { dataActions } from "../reduxStore/redux-fecht/data-action";
 const isEmpty = (value) => value.trim() === "";
 const isLetters = /^[A-Za-z ]+$/;
 const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const isValidUsername = /^[A-Za-z0-9_.-]+$/;
 
 
 const AddUser = () => {
@@ -22,8 +21,6 @@ const AddUser = () => {
   
   const nameRef = useRef();
   const emailRef = useRef();
-  const userRef = useRef();
-  const cityRef = useRef();
 
   const dataFromMoch = useSelector((state) => state.fetchData.users);
 
@@ -40,14 +37,11 @@ const AddUser = () => {
     // text validity
     const enteredName = nameRef.current.value;
     const enteredEmail = emailRef.current.value;
-    // const enteredUsername = userRef.current.value;
     const enteredNameIsValid = !isEmpty(enteredName) && isLetters.test(enteredName);
     const enteredEmailIsValid = isValidEmail.test(enteredEmail);
-    // const enteredUsernameIsValid = isValidUsername.test(enteredUsername);
     setFormInputsValidity({
       name: enteredNameIsValid,
       email: enteredEmailIsValid,
-      // username: enteredUsernameIsValid
     });
     const formIsValid = enteredNameIsValid && enteredEmailIsValid;
     if (!formIsValid) {return;}
@@ -71,7 +65,6 @@ const AddUser = () => {
   // dynamic style classes
   const nameStyles= `col-sm-10 form-control ${!formInputsValidity.name && 'inputInvalid'}`
   const emailStyles= `col-sm-10 form-control ${!formInputsValidity.email && 'inputInvalid'}`
-  // const usernameStyles= `col-sm-10 form-control ${!formInputsValidity.username && 'inputInvalid'}`
 
   return (
     <>
@@ -92,17 +85,6 @@ const AddUser = () => {
       <div className="col-sm-2"></div>
       <div className="errorText">{!formInputsValidity.email && 'Valid email is required'}</div>
     </div>
-    {/* <div className="form-group d-flex flex-wrap">
-      <label htmlFor="inputUsername" className="col-sm-2 col-form-label">Username</label>
-      <input className={usernameStyles} type="text"  id="inputUsername" maxLength="69" ref={userRef}/>
-      <div className="col-sm-2"></div>
-      <div className="errorText">{!formInputsValidity.username && 'Valid username is required'}</div>
-    </div>
-    <div className="form-group d-flex flex-wrap">
-      <label htmlFor="inputCity" className="col-sm-2 col-form-label">City</label>
-      <input className="col-sm-10 form-control" type="text"  id="inputCity" maxLength="69" ref={cityRef}/>
-      <div className="errorText"></div>
-    </div> */}
     <div className="d-flex justify-content-between mt-2 mb-2">
     <button onClick={cancelHandler} type="button" className="btn btn-danger pl-5 pr-5">Cancel</button>
     <button type="submit" className="btn btn-primary pl-5 pr-5">Submit</button>
