@@ -1,10 +1,11 @@
+/* eslint-disable */
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataActions } from "../reduxStore/redux-fecht/data-action";
 
 const isEmpty = (value) => value.trim() === "";
-const isLetters = /^[A-Za-z/s/.-]+$/;
+const isLetters = /^[a-zA-Z\s\.-]+$/;
 const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
