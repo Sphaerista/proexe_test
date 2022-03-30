@@ -5,7 +5,7 @@ import { dataActions } from "../reduxStore/redux-fecht/data-action";
 import { useNavigate } from "react-router-dom";
 
 const isEmpty = (value) => value.trim() === "";
-const isLetters = /^[A-Za-z ]+$/;
+const isLetters = /^[a-zA-Z\s\.-]+$/;
 const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const isValidUsername = /^[A-Za-z0-9_.-]+$/;
 
@@ -79,7 +79,7 @@ const EditUser = () => {
       <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
       <input className={nameStyles} type="text"  id="inputName" defaultValue={oneUser?.name} ref={nameRef} required/>
       <div className="col-sm-2"></div>
-    <div className="errorText">{!formInputsValidity.name && 'Name is required'}</div>
+    <div className="errorText">{!formInputsValidity.name && 'Valid name is required'}</div>
     </div>
     <div className="form-group d-flex flex-wrap">
       <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
